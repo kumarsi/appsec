@@ -1,0 +1,23 @@
+{
+  "name": "appsec",
+  "version": "0.1.0",
+  "description": "AppSec E-learning application",
+  "main": "lab/index.js",
+  "scripts": {
+    
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kumarsi/appsec.git"
+  },
+  "keywords": [
+    "appsec",
+    "e-learning"
+  ],
+  "author": "Kumar",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kumarsi/appsec/issues"
+  },
+  "homepage": "https://github.com/kumarsi/appsec#readme"
+}

@@ -18,5 +18,24 @@ module.exports = {
 			})
 			.then(courses => res.status(200).send(courses))
 			.catch(err => res.status(400).send(err))
+	},
+
+	retrieve(req, res) {
+		return Course
+			.findById(req.params.courseId, {
+				include: [{
+					model: Module,
+					as: 'modules'
+				}]
+			})
+			.then(c => {
+				if (!c) {
+					return res.status(400).send({
+						message: 'Course not found'
+					});
+				}
+				return res.status(200).send(c);
+			})
+			.catch(err => res.status(400).send(err));
 	}
 }

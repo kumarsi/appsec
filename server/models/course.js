@@ -5,16 +5,13 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false,
     }
-  }, {
-    classMethods: {
-      associate: (models) => {
-        Course.hasMany(models.Module, {
-          foreignKey: 'courseId',
-          as: 'modules'
-        });
-        
-      }
-    }
   });
+  Course.associate = (models) => {
+    Course.hasMany(models.Module, {
+      foreignKey: 'courseId',
+      as: 'modules'
+    });
+    
+  }
   return Course;
 };

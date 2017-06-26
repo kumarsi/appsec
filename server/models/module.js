@@ -5,15 +5,12 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false
     }
-  }, {
-    classMethods: {
-      associate: models => {
-        Module.belongsTo(models.Course, {
-          foreignKey: 'courseId',
-          onDelete: 'CASCADE'
-        });
-      }
-    }
   });
+  Module.associate = models => {
+      Module.belongsTo(models.Course, {
+        foreignKey: 'courseId',
+        onDelete: 'CASCADE'
+      });
+  }
   return Module;
-};
+}

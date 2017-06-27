@@ -6,6 +6,8 @@ module.exports = app => {
 		res.status(200)
 			.send({message: 'Welcome to the appsec apis'}));
 
+	//Administer courses and modules start
+
 	app.post('/api/courses', coursesController.create);
 	app.get('/api/courses', coursesController.list);
 	app.get('/api/courses/:courseId', coursesController.retrieve);
@@ -16,4 +18,6 @@ module.exports = app => {
 	app.get('/api/modules/:moduleId', modulesController.retrieve);
 	app.patch('/api/modules/:moduleId', modulesController.update);
 	app.delete('/api/modules/:moduleId', modulesController.destroy);
+
+	//Administer courses and modules end
 }

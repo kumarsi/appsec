@@ -23,8 +23,12 @@
   "homepage": "https://github.com/kumarsi/appsec#readme",
   "dependencies": {
     "body-parser": "^1.17.2",
+    "compression": "^1.6.2",
+    "cookie-session": "^2.0.0-beta.2",
     "express": "^4.15.3",
     "morgan": "^1.8.2",
+    "passport": "^0.3.2",
+    "passport-saml": "git://github.com/pawanvshah/passport-saml.git",
     "pg": "^6.2.3",
     "pg-hstore": "^2.3.2",
     "sequelize": "^4.0.0"

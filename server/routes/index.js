@@ -11,5 +11,9 @@ module.exports = app => {
 	app.get('/api/courses/:courseId', coursesController.retrieve);
 	app.patch('/api/courses/:courseId', coursesController.update);
 	app.delete('/api/courses/:courseId', coursesController.destroy);
+
 	app.post('/api/courses/:courseId/modules', modulesController.create);
+	app.get('/api/modules/:moduleId', modulesController.retrieve);
+	app.patch('/api/modules/:moduleId', modulesController.update);
+	app.delete('/api/modules/:moduleId', modulesController.destroy);
 }

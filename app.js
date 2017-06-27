@@ -1,7 +1,7 @@
 const express = require('express');
 const logger = require('morgan');
 const bodyParser = require('body-parser');
-const auth = require('./server/auth/auth');
+const auth = require('./server/auth/local'); //require('./server/auth/auth');
 const compression = require('compression');
 const cookieSession = require('cookie-session');
 

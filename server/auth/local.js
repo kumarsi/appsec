@@ -4,7 +4,7 @@ const LocalStrategy = require('passport-local').Strategy;
 passport.use(new LocalStrategy(
   function(username, password, done) {
     if (['kumarsi', 'harineem'].includes(username) && password === 'secret') {
-			done(null, {'email': `${username}@thoughtworks.com`})
+			done(null, {'email': `${username}@thoughtworks.com`, 'username': username})
 		}
 		done(null, false);
   }));

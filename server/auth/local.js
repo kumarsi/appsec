@@ -1,14 +1,13 @@
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 
-
-passport.use(new LocalStrategy((username, password, done) => {
-	if (['kumarsi', 'harineem'].includes(username) && password === 'secret') {
-		done(null, {'user': username})
-	}
-	done(null, false);
-
-}));
+passport.use(new LocalStrategy(
+  function(username, password, done) {
+    if (['kumarsi', 'harineem'].includes(username) && password === 'secret') {
+			done(null, {'email': `${username}@thoughtworks.com`})
+		}
+		done(null, false);
+  }));
 
 passport.serializeUser(function(user, done) { 
   // TODO: please read the Passport documentation on how to implement this. We're now

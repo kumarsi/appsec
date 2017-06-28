@@ -1,10 +1,17 @@
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 
+const seedUsers = {
+	'kumarsi': {'email': 'kumarsi@thoughtworks.com', 'id': '13319',
+	 						'username': 'kumarsi'},
+	'harineem': {'email': 'harineem@thoughtworks.com', 'id': '12630',
+	 						'username': 'harineem'}
+}
+
 passport.use(new LocalStrategy(
   function(username, password, done) {
-    if (['kumarsi', 'harineem'].includes(username) && password === 'secret') {
-			done(null, {'email': `${username}@thoughtworks.com`, 'username': username})
+    if (password === 'secret') {
+    	return done(null, seedUsers[username]);
 		}
 		done(null, false);
   }));

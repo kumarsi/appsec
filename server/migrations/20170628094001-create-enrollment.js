@@ -7,6 +7,9 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
+      user: {
+        type: Sequelize.STRING
+      },
       completionStatus: {
         type: Sequelize.STRING
       },

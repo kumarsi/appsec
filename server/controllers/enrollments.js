@@ -7,7 +7,8 @@ module.exports = {
 			.create({
 				moduleId: req.params.moduleId,
 				user: req.user.id,
-				completionStatus: Enrollement.Status.IN_PROGRESS
+				completionStatus: Enrollment.Status.IN_PROGRESS,
+				slidesReviewed: 0
 			})
 			.then(enrollment => res.status(201).send(enrollment))
 			.catch(err => res.status(500).send(err));

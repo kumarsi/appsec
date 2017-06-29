@@ -2,7 +2,7 @@ const coursesController = require('../controllers').courses;
 const modulesController = require('../controllers').modules;
 const enrollmentsController = require('../controllers').enrollments;
 
-module.exports = (app, ensureLoggedIn) => {
+module.exports = (app, ensureLoggedIn, user) => {
 	app.get('/api', (_, res) => 
 		res.status(200)
 			.send({message: 'Welcome to the appsec apis'}));
@@ -10,16 +10,16 @@ module.exports = (app, ensureLoggedIn) => {
 	//Administer courses and modules start
 	//TODO: Include authentication and authorization
 
-	app.post('/api/courses', coursesController.create);
-	app.get('/api/courses', coursesController.list);
-	app.get('/api/courses/:courseId', coursesController.retrieve);
-	app.patch('/api/courses/:courseId', coursesController.update);
-	app.delete('/api/courses/:courseId', coursesController.destroy);
+	app.post('/api/courses', ensureLoggedIn(), user.is('admin'), coursesController.create);
+	app.get('/api/courses', ensureLoggedIn(), coursesController.list);
+	app.get('/api/courses/:courseId', ensureLoggedIn(), coursesController.retrieve);
+	app.patch('/api/courses/:courseId', ensureLoggedIn(), user.is('admin'), coursesController.update);
+	app.delete('/api/courses/:courseId', ensureLoggedIn(), user.is('admin'), coursesController.destroy);
 
-	app.post('/api/courses/:courseId/modules', modulesController.create);
-	app.get('/api/modules/:moduleId', modulesController.retrieve);
-	app.patch('/api/modules/:moduleId', modulesController.update);
-	app.delete('/api/modules/:moduleId', modulesController.destroy);
+	app.post('/api/courses/:courseId/modules', ensureLoggedIn(), user.is('admin'), modulesController.create);
+	app.get('/api/modules/:moduleId', ensureLoggedIn(), modulesController.retrieve);
+	app.patch('/api/modules/:moduleId', ensureLoggedIn(), user.is('admin'), modulesController.update);
+	app.delete('/api/modules/:moduleId', ensureLoggedIn(), user.is('admin'), modulesController.destroy);
 
 	//Administer courses and modules end
 

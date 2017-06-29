@@ -27,7 +27,7 @@ app.use(user.middleware());
 user.use('admin', req => {
 	return ['kumarsi'].includes(req.user.username);
 });
-require('./server/routes')(app, ensureLoggedIn)
+require('./server/routes')(app, ensureLoggedIn, user)
 
 //Testing login routes
 

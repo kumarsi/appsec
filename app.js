@@ -29,37 +29,6 @@ app.use(user.middleware());
 user.use('admin', req => {
 	return config.auth.admin.includes(req.user.username);
 });
-require('./server/routes')(app, ensureLoggedIn, user)
-
-//Login routes
-
-app.get('/', (req, res) => res.status(200).send({message: "Hello!", user: req.user}))
-
-app.post('/login', auth.authenticate('local', {failureRedirect: '/login'}),
-	(req, res) => res.redirect('/'));
-
-app.get('/login', (_, res) => res.status(200).send({message: 'You must login with a username and password.'}));
-
-app.post('/logout', (req, res) => {
-	req.logout();
-	res.redirect('/');
-});
-
-app.get('/profile', ensureLoggedIn(), (req, res) => 
-	res.status(200).send({message: 'This is your profile', user: req.user}));
-
-app.get('/profile/admin', ensureLoggedIn(), user.is('admin'), (req, res) => 
-	res.status(200).send({message: 'This is your admin profile', user: req.user}));
-
-//Login routes end
-
-
-
-//Catch-all route
-app.get('*', (_, res) => res.status(200).send({
-	message: 'Hello app sec world!'
-}));
-//Catch-all route end
-
+require('./server/routes')(app, ensureLoggedIn.bind(null, '/api/login'), user, auth)
 
 module.exports = app;

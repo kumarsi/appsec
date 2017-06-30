@@ -1,4 +1,5 @@
 const Enrollment = require('../models').Enrollment;
+const Module = require('../models').Module;
 
 
 module.exports = {
@@ -11,6 +12,19 @@ module.exports = {
 				slidesReviewed: 0
 			})
 			.then(enrollment => res.status(201).send(enrollment))
+			.catch(err => res.status(500).send(err));
+	},
+
+	list(req, res) {
+		return Enrollment
+			.find({
+				where: {
+					user: req.user.id
+				}
+			})
+			.then(enrollments => {
+				return res.status(200).send(enrollments || []);
+			})
 			.catch(err => res.status(500).send(err));
 	},
 
@@ -31,7 +45,12 @@ module.exports = {
 			.catch(err => res.status(500).send(err));
 	},
 
+
 	update(req, res) {
+		if (req.body.completionStatus && !Enrollment.Status[req.body.completionStatus]) {
+			return res.status(400)
+				.send({message: `Unknown enrollment status ${req.body.completionStatus}. Valid statuses: ${Object.keys(Enrollment.Status)}`});
+		}
 		return Enrollment.
 			findOne({
 				where: {

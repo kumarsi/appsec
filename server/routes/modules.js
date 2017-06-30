@@ -16,5 +16,8 @@ module.exports = (app, ensureLoggedIn, user) => {
 	app.get('/api/modules/:moduleId/enrollment', ensureLoggedIn(), enrollmentsController.retrieve);
 	app.patch('/api/modules/:moduleId/enrollment', ensureLoggedIn(), enrollmentsController.update);
 	app.delete('/api/modules/:moduleId/enrollment', ensureLoggedIn(), enrollmentsController.destroy);
+
+	app.get('/api/enrollments', ensureLoggedIn(), enrollmentsController.list);
+
 	//Module enrollments end
 }

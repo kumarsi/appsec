@@ -1,0 +1,419 @@
+{
+	"variables": [],
+	"info": {
+		"name": "AppSec",
+		"_postman_id": "0894523c-1ee8-a651-39d6-8f8218253cc1",
+		"description": "REST APIs to interact with the AppSec service",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create course",
+			"request": {
+				"url": "http://localhost:8000/api/courses",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "AppSec101",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"description": "Creates a course"
+			},
+			"response": []
+		},
+		{
+			"name": "Create a module",
+			"request": {
+				"url": "http://localhost:8000/api/courses/2/modules",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "Threat Modelling",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"description": "Creates a module under a given course"
+			},
+			"response": []
+		},
+		{
+			"name": "Retrieve specific course",
+			"request": {
+				"url": "http://localhost:8000/api/courses/2",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": "Retrieve course by id and its associated modules"
+			},
+			"response": []
+		},
+		{
+			"name": "Retrieve all courses",
+			"request": {
+				"url": "http://localhost:8000/api/courses",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": "Retrieves all courses and their associated modules"
+			},
+			"response": []
+		},
+		{
+			"name": "Update course",
+			"request": {
+				"url": "http://localhost:8000/api/courses/2",
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "AppSec101 - updated",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"description": "Updates course - only name can be updated"
+			},
+			"response": []
+		},
+		{
+			"name": "Delete course",
+			"request": {
+				"url": "http://localhost:8000/api/courses/2",
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": "Delete a course and its associated modules"
+			},
+			"response": []
+		},
+		{
+			"name": "Retrieve module",
+			"request": {
+				"url": "http://localhost:8000/api/modules/5",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": "Retrieves a module"
+			},
+			"response": []
+		},
+		{
+			"name": "Update module",
+			"request": {
+				"url": "http://localhost:8000/api/modules/5",
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "Threat Modelling - updated",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"description": "Update a module name"
+			},
+			"response": []
+		},
+		{
+			"name": "Delete module",
+			"request": {
+				"url": "http://localhost:8000/api/modules/5",
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": "Delete a module"
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"request": {
+				"url": "http://localhost:8000/api/login",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "username",
+							"value": "kumarsi",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "secret",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"description": "Logs in to the AppSec APIs."
+			},
+			"response": []
+		},
+		{
+			"name": "User profile",
+			"request": {
+				"url": "http://localhost:8000/api/profile",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "username",
+							"value": "kumarsi",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "secret",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"description": "Lists the user profile data if the user had already logged in"
+			},
+			"response": []
+		},
+		{
+			"name": "User profile (admin)",
+			"request": {
+				"url": "http://localhost:8000/api/profile/admin",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "username",
+							"value": "kumarsi",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "secret",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"description": "Lists the user profile for admin users"
+			},
+			"response": []
+		},
+		{
+			"name": "Logout",
+			"request": {
+				"url": "http://localhost:8000/api/logout",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "username",
+							"value": "kumarsi",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "secret",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"description": "Logs out of the API system"
+			},
+			"response": []
+		},
+		{
+			"name": "Enroll for a module",
+			"request": {
+				"url": "http://localhost:8000/api/modules/6/enrollment",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": "Enrolls the logged in user for a given module"
+			},
+			"response": []
+		},
+		{
+			"name": "Update enrollment",
+			"request": {
+				"url": "http://localhost:8000/api/modules/6/enrollment",
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "slidesReviewed",
+							"value": "12",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "completionStatus",
+							"value": "COMPLETED",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"description": "Updates enrollment data such as \"slidesReviewed\" and \"completionStatus\""
+			},
+			"response": []
+		},
+		{
+			"name": "Fetch enrollment details",
+			"request": {
+				"url": "http://localhost:8000/api/modules/6/enrollment",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": "Fetches the enrollment details for the logged in user, for a specific module"
+			},
+			"response": []
+		},
+		{
+			"name": "Unenroll",
+			"request": {
+				"url": "http://localhost:8000/api/modules/6/enrollment",
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": "Unenroll the logged in user from a given module"
+			},
+			"response": []
+		},
+		{
+			"name": "Fetch all enrollments",
+			"request": {
+				"url": "http://localhost:8000/api/enrollments",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": "Retrieves all enrollments for the logged in user"
+			},
+			"response": []
+		}
+	]
+}
